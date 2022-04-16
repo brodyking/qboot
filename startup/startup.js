@@ -6,7 +6,7 @@ if (localStorage.getItem('qbootSelectedOS') == null) {
 var setupclock = 1;
 var intervalId = window.setInterval(function(){
   if (setupclock > 2) {
-    window.open('../vms/' + localStorage.getItem('qbootSelectedOS') + '.html',"_self")
+    window.open('vms/' + localStorage.getItem('qbootSelectedOS') + '.html',"_self")
   }
   document.getElementById('startupinfo').innerHTML = "Press [alt] to enter setup [" + setupclock + "/3]";
   setupclock += 1;
