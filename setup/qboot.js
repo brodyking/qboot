@@ -18,7 +18,3 @@ link.href = 'qboot.css';
 // link element to it 
 document.getElementsByTagName('HEAD')[0].appendChild(link); 
 
-commands["version"] = "terminline('<b>user: </b>root@netbox<br><b>window-manager: </b>" + wm + "<br><b>version: </b> 0.5<br><b>last-updated: </b> 03/18/2022')";
-
-terminal();
-
