@@ -14,6 +14,6 @@ var intervalId = window.setInterval(function(){
 
 document.addEventListener("keyup", function(event) {
     if (event.keyCode === 18) {
-        window.open("../setup/setup.html","_self")
+        window.open("setup/setup.html","_self")
     }
 });
