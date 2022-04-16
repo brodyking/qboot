@@ -1,0 +1,23 @@
+@font-face {
+  font-family: font;
+  src: url('../all/font.ttf');
+}
+body {
+  font-family: font;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
+.startupinfo {
+  display: block;
+  float: center;
+  position: absolute;
+  bottom: 15%;
+  left: 20%;
+}
+img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
