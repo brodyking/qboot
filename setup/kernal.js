@@ -128,11 +128,28 @@ var appsCurrentlyInstalled = 0;
 
 // Command Database
 const commands = []; // creates the db
-commands["help"] = "termblock('<termhead><u style=" + '"' + "float: left" + '"' + "onclick=" + '"' + "termreturn()" + '"' + ">return</u>Command List</termhead><ul style=" + '"' + "list-style: none;margin: 0px;" + '"' + "><li>help <highlight>shows help commands</highlight></li><li>echo [text] <highlight> lets you echo text</highlight></li><li>clear <highlight> clears the terminal</highlight></li><li>js [command] <highlight> run js commands</highlight></li><li>version <highlight> shows system info</highlight></li><li>cf [name] <highlight> lets you create files</highlight></li><li>ef [name] <highlight> lets you edit files</highlight></li><li>rf [name] <highlight> lets you read files</highlight><li><li>df [name] <highlight> lets you delete files</highlight></li><li>install [full package url] <highlight> install packages onto your system</highlight></li><li>reboot <highlight> lets you reboot the system</highlight></li></ul>');";
+commands["help"] = `termblock('<div id="helpcommandlist"></div>'); loadhelp();`;
+
+function loadhelp() {
+  document.getElementById('helpcommandlist').innerHTML = `
+  <termhead><u style="float: left" onclick="termreturn()">return</u>Command List</termhead>
+
+  <ul style="list-style: none;margin: 0px;"><li>help <highlight>shows help commands</highlight></li>
+  <li>echo [text] <highlight> lets you echo text</highlight></li><li>clear <highlight> clears the terminal</highlight></li>
+  <li>js [command] <highlight> run js commands</highlight></li><li>version <highlight> shows system info</highlight></li>
+  <li>cf [name] <highlight> lets you create files</highlight></li><li>ef [name] <highlight> lets you edit files</highlight></li>
+  <li>rf [name] <highlight> lets you read files</highlight><li><li>df [name] <highlight> lets you delete files</highlight></li>
+  <li>install [package url] <highlight> install packages onto your system</highlight></li>
+  <li>tempinstall [package url] <highlight> install packages, uninstalled on reboot</highlight></li>
+  <li>reboot <highlight> lets you reboot the system</highlight></li></ul>`;
+
+}
+
+
 commands["echo"] = "terminline(document.getElementById('terminalinput').textContent.slice(4,Infinity))";
 commands["clear"] = "document.getElementById('terminaloutput').innerHTML = ''";
 commands["js"] = "eval(document.getElementById('terminalinput').textContent.slice(3,Infinity));terminline('<highlight> ' + document.getElementById('terminalinput').textContent.slice(3,Infinity) + '</highlight> was run by the OS.')";
-commands["version"] = "terminline('<b>user: </b>" + username + '@' + computer + "<br><b>window-manager: </b>" + wm + "<br><b>version: </b> 0.5<br><b>last-updated: </b> 03/18/2022')";
+commands["version"] = "terminline('<b>user: </b>' + username + '@' + computer + '<br><b>window-manager: </b>" + wm + "<br><b>version: </b> 0.6<br><b>last-updated: </b> 04/18/2022')";
 
 function commandLookup() { // looks at the list of commands
 	document.getElementById("terminaloutput").innerHTML += "<highlight>" + username + '@' + computer + " $ " + document.getElementById("terminalinput").textContent + "</highlight><br>";
@@ -237,3 +254,13 @@ document.addEventListener("keyup", function(event) {
         terminal();
     }
 });
+
+function includeJS(url) {
+  var includeJSVar = document.createElement('script');
+
+  includeJSVar.setAttribute('src',url);
+
+document.head.appendChild(includeJSVar);
+}
+
+commands["tempinstall"] = "includeJS(document.getElementById('terminalinput').textContent.slice(12,Infinity));"
