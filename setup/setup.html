@@ -10,10 +10,7 @@
   <script src="qboot.js"></script>
   <script src="kernal.js"></script>
   <script>
-    computer = 'qboot';
-    username = 'bios';
     terminal();
-    commands["version"] = "terminline('user: " + username + '@' + computer + "<br>window-manager: " + wm + "<br>version:  0.5<br>last-updated:  03/18/2022')";
     document.getElementById('terminaloutput').innerHTML += `Welcome to the qboot setup! Run 'qboot' to see all avaliable commands.<br>`;
 
     commands["qboot"] = "termblock('<termhead><u style=" + '"' + "float: left" + '"' + "onclick=" + '"' + "termreturn()" + '"' + ">return</u>qboot command list</termhead><ul style=" + '"' + "list-style: none;margin: 0px;" + '"' + "><li>qboot-s <highlight>Select a different OS (kimmu,exos,megaos)</highlight></li><li>qboot-r <highlight>Reset the localStorage</highlight></li><li>qboot-vm <highlight>Run other OSes inside of netbox (kimmu,exos,megaos)</highlight></li></ul>');"
